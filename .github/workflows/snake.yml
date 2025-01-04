@@ -9,19 +9,34 @@ jobs:
   generate-snake:
     runs-on: ubuntu-latest
     steps:
+      # Paso 1: Checkout del repositorio
       - name: Checkout the repository
         uses: actions/checkout@v3
 
+      # Paso 2: Generar el archivo SVG de la Snake
       - name: Generate Snake Game from Contributions
-        uses: Platane/snk@v2
+        uses: Platane/snk@v3
         with:
-          github_user_name: marh08192003
+          github_user_name: durgeshsamariya
 
-      - name: Move Generated Snake to Dist Folder
+      # Paso 3: Depurar las contribuciones si hay problemas
+      - name: Debug Contributions (optional)
         run: |
-          mkdir -p dist
-          mv github-contribution-grid-snake.svg dist/
+          curl -s "https://github.com/users/marh08192003/contributions" > contributions.html
+          cat contributions.html
 
+      # Paso 4: Mover el archivo generado a una carpeta de salida
+      - name: Check and Move Generated Snake
+        run: |
+          if [ -f github-contribution-grid-snake.svg ]; then
+            mkdir -p dist
+            mv github-contribution-grid-snake.svg dist/
+          else
+            echo "Snake SVG not found!"
+            exit 1
+          fi
+
+      # Paso 5: Commit y push del archivo a la rama `output`
       - name: Commit and Push the Snake SVG to Output Branch
         uses: ad-m/github-push-action@v0.6.0
         with:
