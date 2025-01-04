@@ -19,8 +19,8 @@ jobs:
           output: dist/github-contribution-grid-snake.svg
 
       - name: Push the SVG to the repository
-        uses: ad-m/github-push-action@v0.6.0
+        uses: actions/upload-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: output
-          force: true
+          name: github-contribution-grid-snake
+          path: dist/github-contribution-grid-snake.svg
+
