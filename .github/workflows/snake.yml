@@ -17,13 +17,12 @@ jobs:
         with:
           github_user_name: marh08192003
 
-      - name: Push the SVG to the repository
+      - name: Move Generated Snake to Dist Folder
         run: |
           mkdir -p dist
-          mv ./github-contribution-grid-snake.svg dist/
-        shell: bash
+          mv github-contribution-grid-snake.svg dist/
 
-      - name: Commit and Push the SVG to output branch
+      - name: Commit and Push the Snake SVG to Output Branch
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
