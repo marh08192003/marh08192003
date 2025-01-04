@@ -1,7 +1,4 @@
 
-<p align = "center">
-	<img src="https://github.com/marh08192003/marh08192003/blob/output/github-contribution-grid-snake.svg" alt="Snake Game"/>
-</p>
 
 <hr width="36%" >
 
